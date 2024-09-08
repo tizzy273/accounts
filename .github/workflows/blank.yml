@@ -1,3 +1,4 @@
+
 name: Build and Deploy to Heroku
 
 on:
@@ -37,6 +38,9 @@ jobs:
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         HEROKU_APP_NAME_ACCOUNTS: ${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
       run: |
+        git config --global user.email "tiziano.riccioli@gmail.com"
+        git config --global user.name "y273tizz"
+      
         accounts=${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
 
         git remote add heroku https://git.heroku.com/${accounts}.git
