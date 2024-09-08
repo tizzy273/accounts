@@ -36,7 +36,7 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         HEROKU_APP_NAME_ACCOUNTS: ${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
-      run:   HEROKU_APP_NAME=${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
+      run:   accounts=${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
         
 
         git init
