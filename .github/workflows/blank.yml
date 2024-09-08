@@ -16,8 +16,6 @@ jobs:
       matrix:
         app:
           - accounts
-          - transactions
-          - gateway
 
     steps:
     # Step 1: Checkout the code
