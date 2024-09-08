@@ -30,8 +30,6 @@ jobs:
     - name: Build with Maven
       run: mvn --projects :accounts clean install
 
-
-      
     # Step 4: Deploy to Heroku
     - name: Deploy to Heroku
       env:
@@ -45,4 +43,4 @@ jobs:
         git remote add heroku https://git.heroku.com/$HEROKU_APP_NAME.git
         git add .
         git commit -m "Deploy to Heroku from GitHub Actions"
-        git push --force heroku `git subtree split --prefix ${matrix.app} main`:refs/heads/main
+        git push --force heroku `git subtree split --prefix accounts main`:refs/heads/main
