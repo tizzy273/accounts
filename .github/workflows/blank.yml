@@ -40,7 +40,6 @@ jobs:
       run: |
         # Configura l'utente Git
         git config --global user.email "tiziano.riccioli@gmail.com"
-        git config --global user.name "tizzy273"
         
         # Aggiungi il remote di Heroku
         git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}.git
