@@ -12,10 +12,7 @@ jobs:
   deploy-microservices:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        app:
-          - accounts
+  
 
     steps:
     # Step 1: Checkout the code
@@ -31,8 +28,10 @@ jobs:
 
     # Step 3: Build the project using Maven
     - name: Build with Maven
-      run: mvn --projects ${{matrix.app}} clean install
+      run: mvn --projects accounts clean install
 
+
+      
     # Step 4: Deploy to Heroku
     - name: Deploy to Heroku
       env:
