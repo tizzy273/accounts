@@ -44,7 +44,9 @@ jobs:
         accounts=${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
 
         git remote add heroku https://git.heroku.com/${accounts}.git
-        
+
+        git subtree split --prefix=app-accounts -b deploy-branch
+      
         git add .
         git commit -m "Deploy to Heroku from GitHub Actions" || echo "No changes to commit"
 
