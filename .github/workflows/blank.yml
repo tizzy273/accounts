@@ -43,4 +43,4 @@ jobs:
         git remote add heroku https://git.heroku.com/$HEROKU_APP_NAME.git
         git add .
         git commit -m "Deploy to Heroku from GitHub Actions"
-        git push --force heroku `git subtree split --prefix accounts main`:refs/heads/main
+        git push --force heroku `git subtree split --prefix app-accounts main`:refs/heads/main
