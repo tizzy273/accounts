@@ -31,22 +31,12 @@ jobs:
     - name: Build with Maven
       run: mvn --projects :accounts clean install
 
+  
     # Step 4: Deploy to Heroku
     - name: Deploy to Heroku
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-        HEROKU_APP_NAME_ACCOUNTS: ${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
-      run: |
-        # Configura l'utente Git
-        git config --global user.email "tiziano.riccioli@gmail.com"
-        
-        # Aggiungi il remote di Heroku
-        git remote add heroku https://git.heroku.com/app-accounts.git
-    
-        # Aggiungi e committa tutte le modifiche
-        git add .
-        git commit -m "Deploy to Heroku from GitHub Actions" || echo "No changes to commit"
-        
-        # Pusha il branch principale al remote di Heroku
-        git push --force heroku main
+      uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
+      with:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+          HEROKU_APP_NAME_ACCOUNTS: ${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
+   
