@@ -38,18 +38,16 @@ jobs:
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         HEROKU_APP_NAME_ACCOUNTS: ${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
       run: |
+        # Configura l'utente Git
         git config --global user.email "tiziano.riccioli@gmail.com"
         git config --global user.name "tizzy273"
-      
-        accounts=${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
-
-        git remote add heroku https://git.heroku.com/app-accounts.git
-
-        git subtree split --prefix=app-accounts -b deploy-branch
-      
+        
+        # Aggiungi il remote di Heroku
+        git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}.git
+    
+        # Aggiungi e committa tutte le modifiche
         git add .
         git commit -m "Deploy to Heroku from GitHub Actions" || echo "No changes to commit"
-
-        git subtree split --prefix=app-accounts -b deploy-branch
         
-        git push --force heroku deploy-branch:refs/heads/main
+        # Pusha il branch principale al remote di Heroku
+        git push --force heroku main
