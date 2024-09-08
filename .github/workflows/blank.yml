@@ -39,11 +39,11 @@ jobs:
         HEROKU_APP_NAME_ACCOUNTS: ${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
       run: |
         git config --global user.email "tiziano.riccioli@gmail.com"
-        git config --global user.name "y273tizz"
+        git config --global user.name "tizzy273"
       
         accounts=${{ secrets.HEROKU_APP_NAME_ACCOUNTS }}
 
-        git remote add heroku https://git.heroku.com/${accounts}.git
+        git remote add heroku https://git.heroku.com/app-accounts.git
 
         git subtree split --prefix=app-accounts -b deploy-branch
       
