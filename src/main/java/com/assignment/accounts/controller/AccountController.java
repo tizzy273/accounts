@@ -21,8 +21,9 @@ public class AccountController {
         return new ResponseEntity<>(accountService.createAccount(account), HttpStatus.OK);
     }
 
-    @GetMapping("/customer-accounts")
-    public ResponseEntity<List<Account>> getAccountsByCustomerId(@RequestParam(name = "customer-id")Integer customerId){
-        return new ResponseEntity<>(accountService.getAccountsByCustomerId(customerId), HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<Account> getAccountById(@RequestParam Integer id){
+        return new ResponseEntity<>(accountService.getAccountById(id), HttpStatus.OK);
     }
+
 }

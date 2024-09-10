@@ -4,6 +4,7 @@ import com.assignment.accounts.dto.Account;
 import com.assignment.accounts.entity.AccountEntity;
 import com.assignment.accounts.entity.CustomerEntity;
 import com.assignment.accounts.exception.BadRequestException;
+import com.assignment.accounts.exception.ResourceNotFoundException;
 import com.assignment.accounts.mapper.AccountMapper;
 import com.assignment.accounts.repository.AccountRepository;
 import com.assignment.accounts.repository.CustomerRepository;
@@ -19,6 +20,7 @@ public class AccountService {
     @Autowired
     private CustomerRepository customerRepository;
 
+
     @Autowired
     private AccountRepository accountRepository;
 
@@ -27,6 +29,9 @@ public class AccountService {
 
 
     public Account createAccount(Account account) {
+        if(account.getCustomerId() == null){
+            throw new BadRequestException("You have to define a Customer ID for this account");
+        }
 
         Optional<CustomerEntity> customerEntityOptional = customerRepository.findById(account.getCustomerId());
 
@@ -36,7 +41,7 @@ public class AccountService {
              customerEntity = customerEntityOptional.get();
        }
         else {
-            throw new BadRequestException("There is no Customer with ID = " + account.getCustomerId());
+            throw new ResourceNotFoundException("There is no Customer with ID = " + account.getCustomerId());
         }
 
          AccountEntity accountEntity = new AccountEntity(customerEntity);
@@ -45,7 +50,14 @@ public class AccountService {
  }
 
 
-    public List<Account> getAccountsByCustomerId(Integer customerId) {
-        return accountMapper.mapEntityListToDtoList(accountRepository.getAccountByCustomerId(customerId));
+    public Account getAccountById(Integer id) {
+        Optional<AccountEntity> accountEntityOptional = accountRepository.findById(id);
+
+        if(accountEntityOptional.isEmpty()){
+            throw new ResourceNotFoundException("There is no account with id = " + id);
+        }
+        else {
+            return accountMapper.toDto(accountEntityOptional.get());
+        }
     }
 }

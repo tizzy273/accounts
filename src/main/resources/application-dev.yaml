@@ -1,0 +1,21 @@
+server:
+  port: 8081
+  url: http://localhost:${server.port}
+
+
+application:
+  name: Accounts
+  basepath: accounts
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: accounts
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate
+  h2:
+    console.enabled: true

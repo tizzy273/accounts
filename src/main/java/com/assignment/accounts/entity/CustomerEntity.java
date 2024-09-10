@@ -18,7 +18,6 @@ public class CustomerEntity {
 
     private String surname;
 
-
     @OneToMany(mappedBy = "customer")
     List<AccountEntity> accounts;
 

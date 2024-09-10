@@ -8,8 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AccountRepository extends CrudRepository<AccountEntity, Long> {
-
-    @Query
-    public List<AccountEntity> getAccountByCustomerId(Integer accountId);
+public interface AccountRepository extends CrudRepository<AccountEntity, Integer> {
 }
