@@ -17,7 +17,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/user-info")
+    @GetMapping("/customer-info")
     public ResponseEntity<Customer> getCustomer(@RequestParam(name = "customer-id")Integer customerId){
         return new ResponseEntity<>(customerService.getCustomerById(customerId), HttpStatus.OK);
     }
