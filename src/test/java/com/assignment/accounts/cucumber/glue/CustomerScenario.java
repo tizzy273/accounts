@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CustomerScenario {
 
 
-    private static final String CUSTOMER_URL = "http://localhost:9091/accounts/customer/customer-info";
+    private static final String CUSTOMER_URL = "http://localhost:8081/accounts/customer/customer-info";
 
 
     private Customer customer;

@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AccountScenario {
 
-    private static final String BASE_URL = "http://localhost:9091/accounts/account";
+    private static final String BASE_URL = "http://localhost:80811/accounts/account";
 
     private Response response;
 
