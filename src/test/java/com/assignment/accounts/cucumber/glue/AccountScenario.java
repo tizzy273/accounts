@@ -131,5 +131,7 @@ public class AccountScenario {
         response = given()
                 .header("Content-Type", "application/json")
                 .get(BASE_URL + "?id="+ -1);
+
+        baseScenario.setResponse(response);
     }
 }
