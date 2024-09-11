@@ -1,11 +1,9 @@
 package com.assignment.accounts.cucumber.glue;
 
-import com.assignment.accounts.dto.Account;
 import com.assignment.accounts.dto.Customer;
 import com.assignment.accounts.entity.CustomerEntity;
 import com.assignment.accounts.mapper.CustomerMapper;
 import com.assignment.accounts.repository.CustomerRepository;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

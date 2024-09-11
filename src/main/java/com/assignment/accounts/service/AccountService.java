@@ -11,15 +11,17 @@ import com.assignment.accounts.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service class for managing accounts.
+ * Provides methods to create and retrieve account information.
+ */
 @Service
 public class AccountService {
 
     @Autowired
     private CustomerRepository customerRepository;
-
 
     @Autowired
     private AccountRepository accountRepository;
@@ -27,37 +29,40 @@ public class AccountService {
     @Autowired
     private AccountMapper accountMapper;
 
-
+    /**
+     * Creates a new account.
+     *
+     * @param account the account details to create
+     * @return the created account
+     * @throws BadRequestException if the customer ID is not provided
+     * @throws ResourceNotFoundException if the customer with the provided ID is not found
+     */
     public Account createAccount(Account account) {
-        if(account.getCustomerId() == null){
+        if (account.getCustomerId() == null) {
             throw new BadRequestException("You have to define a Customer ID for this account");
         }
 
         Optional<CustomerEntity> customerEntityOptional = customerRepository.findById(account.getCustomerId());
 
-        CustomerEntity customerEntity = null;
+        CustomerEntity customerEntity = customerEntityOptional.orElseThrow(() ->
+                new ResourceNotFoundException("There is no Customer with ID = " + account.getCustomerId())
+        );
 
-        if(customerEntityOptional.isPresent()){
-             customerEntity = customerEntityOptional.get();
-       }
-        else {
-            throw new ResourceNotFoundException("There is no Customer with ID = " + account.getCustomerId());
-        }
+        AccountEntity accountEntity = new AccountEntity(customerEntity);
+        return accountMapper.toDto(accountRepository.save(accountEntity));
+    }
 
-         AccountEntity accountEntity = new AccountEntity(customerEntity);
-         return accountMapper.toDto(accountRepository.save(accountEntity)) ;
-
- }
-
-
+    /**
+     * Retrieves an account by its ID.
+     *
+     * @param id the ID of the account to retrieve
+     * @return the account with the specified ID
+     * @throws ResourceNotFoundException if the account with the specified ID is not found
+     */
     public Account getAccountById(Integer id) {
-        Optional<AccountEntity> accountEntityOptional = accountRepository.findById(id);
+        AccountEntity accountEntity = accountRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("There is no account with id = " + id));
 
-        if(accountEntityOptional.isEmpty()){
-            throw new ResourceNotFoundException("There is no account with id = " + id);
-        }
-        else {
-            return accountMapper.toDto(accountEntityOptional.get());
-        }
+        return accountMapper.toDto(accountEntity);
     }
 }

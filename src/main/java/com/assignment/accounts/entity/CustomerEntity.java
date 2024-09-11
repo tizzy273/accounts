@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+/**
+ * Entity for customer.
+ */
 @Entity
 @Table(name = "CUSTOMER", schema = "ACCOUNTS")
 @Data
