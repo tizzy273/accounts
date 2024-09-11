@@ -20,6 +20,7 @@ public class CustomerScenario {
 
     private static final String CUSTOMER_URL = "http://localhost:9091/accounts/customer/customer-info";
 
+
     private Customer customer;
 
     private Response response;
