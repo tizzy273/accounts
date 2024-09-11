@@ -18,7 +18,6 @@ public class CustomerMapper {
     public Customer toDto(CustomerEntity customerEntity){
         Customer customer =  modelMapper.map(customerEntity, Customer.class);
 
-        if(customer.getAccounts() != null)
          customer.setAccounts(accountMapper.mapEntityListToDtoList(customerEntity.getAccountEntities()));
 
         return customer;
