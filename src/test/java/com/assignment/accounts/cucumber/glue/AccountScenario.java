@@ -1,7 +1,6 @@
 package com.assignment.accounts.cucumber.glue;
 
 import com.assignment.accounts.dto.Account;
-import com.assignment.accounts.dto.ErrorDto;
 import com.assignment.accounts.entity.AccountEntity;
 import com.assignment.accounts.entity.CustomerEntity;
 import com.assignment.accounts.mapper.AccountMapper;
@@ -18,8 +17,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Optional;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;

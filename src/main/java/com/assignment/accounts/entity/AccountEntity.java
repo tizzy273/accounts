@@ -3,7 +3,9 @@ package com.assignment.accounts.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * Entity for account.
+ */
 @Entity
 @Table(name = "ACCOUNT", schema = "ACCOUNTS")
 @Data

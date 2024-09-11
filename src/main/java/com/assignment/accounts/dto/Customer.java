@@ -6,17 +6,16 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * DTO for customer information.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {
 
     private Integer id;
-
     private String name;
-
     private String surname;
-
-    List<Account> accounts;
-
+    private List<Account> accounts;
 }
