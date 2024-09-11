@@ -1,13 +1,17 @@
 package com.assignment.accounts.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "CUSTOMER", schema = "ACCOUNTS")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CustomerEntity {
 
     @Id
@@ -19,6 +23,6 @@ public class CustomerEntity {
     private String surname;
 
     @OneToMany(mappedBy = "customer")
-    List<AccountEntity> accounts;
+    List<AccountEntity> accountEntities;
 
 }
