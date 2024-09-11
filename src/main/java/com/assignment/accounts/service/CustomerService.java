@@ -21,7 +21,7 @@ public class CustomerService {
     private CustomerMapper customerMapper;
 
 
-    public Customer getCustomerById(Integer customerId) {
+    public Customer     getCustomerById(Integer customerId) {
 
         Optional<CustomerEntity> customerEntityOptional = customerRepository.findById(customerId);
 

@@ -9,7 +9,7 @@ application:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb
+    url: jdbc:h2:mem:test
     username: accounts
     password: password
     driverClassName: org.h2.Driver

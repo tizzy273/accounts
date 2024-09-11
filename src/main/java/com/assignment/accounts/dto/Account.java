@@ -12,4 +12,8 @@ public class Account {
     private Integer id;
 
     private Integer customerId;
+
+    public Account(Integer customerId){
+        this.customerId = customerId;
+    }
 }
